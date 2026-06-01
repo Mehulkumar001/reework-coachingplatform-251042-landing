@@ -1,0 +1,60 @@
+<section class="pb-8" [ngClass]="{'py-6 bg-white pt-16': addTopPadding}">
+    <div class="max-w-7xl mx-auto px-8 md:px-12 lg:px-20">
+        <div [class.mb-10]="!extraSubtitleSpacing" [class.mb-14]="extraSubtitleSpacing">
+            <h2 class="custom-section-title mb-4 text-[24px] sm:text-[28px] md:text-[35px]">{{title}}</h2>
+            <p class="section-subtitle text-none mb-10 text-[18px] sm:text-[20px] md:text-[25px]"
+                style="color: #333333 !important; letter-spacing: -0.01em; font-weight: 400 !important;">
+                {{subtitle}}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+            @for (item of items; track $index) {
+            <div class="group h-full flex flex-col">
+                <div class="flex-grow flex flex-col items-center">
+                    <div class="mb-6 flex justify-center">
+                        @if (item.image) {
+                        <div class="flex items-center justify-center overflow-hidden">
+                            <a [routerLink]="item.link || '#'" class="block cursor-pointer">
+                                <img [src]="item.image" [alt]="item.name" class="object-contain"
+                                    [ngStyle]="item.image === '/feature-4.png' ? { height: '72px', maxWidth: '100%', width: '109px' } : item.image === '/feature-3-1-300x238.png' ? { height: '90px', maxWidth: '100%', width: '91.5px' } : item.image === '/feature-5.png' ? { height: '103px', maxWidth: '100%', width: '92px' } : { height: (imageHeight ?? '94.5px') + (typeof imageHeight === 'number' ? 'px' : ''), maxWidth: '100%', width: (imageWidth ?? '91.5px') + (typeof imageWidth === 'number' ? 'px' : '') }" />
+                            </a>
+                        </div>
+                        } @else if (item.icon) {
+                        <div class="text-[#47CBB6]">
+                            <div [innerHTML]="item.icon"></div>
+                        </div>
+                        }
+                    </div>
+                    <h5 [style.font-size]="item.titleFontSize || '18px'"
+                        style="font-family: 'Rethink Sans', sans-serif; font-weight: 500; letter-spacing: 0.24em; line-height: 1.2;"
+                        class="text-[#1F6861] text-center min-h-[40px] flex items-center justify-center uppercase mb-2 leading-tight">
+                        <a [routerLink]="item.link || '#'" class="transition-colors cursor-pointer">
+                            @if (item.nameLines?.length) {
+                            @for (line of item.nameLines; track $index) {
+                            @if ($index > 0) { <br /> }
+                            {{ line }}
+                            }
+                            } @else {
+                            {{item.name}}
+                            }
+                        </a>
+                    </h5>
+                    <p class="text-standard text-center mt-0 mb-0" [style.font-size]="item.descFontSize || '17px'"
+                        style="color: #232323 !important;">
+                        {{item.desc}}
+                    </p>
+                </div>
+            </div>
+            }
+        </div>
+
+        @if (showViewMore) {
+        <div class="my-10 text-center">
+            <button routerLink="/features"
+                class="inline-block text-center cursor-pointer transition-all hover:bg-[#00c4a7] focus:outline-none focus:ring-2 focus:ring-[#00D4B7]/50"
+                style="background-color: #00D4B7; font-family: 'Rethink Sans', sans-serif; font-weight: 400; font-size: 20px; color: #FFFFFF; fill: #FFFFFF; padding: 8px 16px; border-radius: 3px; line-height: 1;">View
+                More</button>
+        </div>
+        }
+    </div>
+</section>

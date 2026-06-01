@@ -1,0 +1,822 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Rethink+Sans:wght@400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'Rethink Sans';
+  src: url('/fonts/RethinkSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rethink Sans';
+  src: url('/fonts/RethinkSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rethink Sans';
+  src: url('/fonts/RethinkSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rethink Sans';
+  src: url('/fonts/RethinkSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rethink Sans';
+  src: url('/fonts/RethinkSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Rethink Sans', sans-serif;
+    color: #232323;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    max-width: 100vw;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+#faqs,
+#testimonials,
+#applySection {
+    scroll-margin-top: 100px;
+}
+
+p {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #232323;
+    text-align: left;
+}
+
+:root {
+    --reecoach-teal: #47CBB6;
+    --reecoach-dark: #1E3A3A;
+    --reecoach-bg-light: #F8FEFD;
+}
+
+.section-title-teal {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 6.5px;
+    color: #1F6861;
+}
+
+.section-title-black {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #232323;
+}
+
+.section-subtitle {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.text-none {
+    text-transform: none !important;
+}
+
+.text-standard {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #232323;
+}
+
+.text-reecoach-teal {
+    color: #47CBB6;
+}
+
+.bg-reecoach-teal {
+    background-color: #47CBB6;
+}
+
+.text-reecoach-dark {
+    color: #1E3A3A;
+}
+
+.bg-reecoach-dark {
+    background-color: #1E3A3A;
+}
+
+.border-reecoach-teal {
+    border-color: #47CBB6;
+}
+
+.nav-link {
+    color: #1F6861;
+    fill: #1F6861;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.btn-teal {
+    @apply bg-[#47CBB6] text-[#1E3A3A] font-bold px-5 py-2 rounded uppercase tracking-wider transition-all hover:bg-[#3ab5a1];
+}
+
+.btn-dark {
+    @apply bg-[#2D5A54] text-white font-bold px-5 py-2 rounded uppercase tracking-wider transition-all hover:bg-[#1E3A3A];
+}
+
+.section-title {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 6.5px;
+    color: #1F6861;
+}
+
+.custom-section-title {
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #1F6861;
+    text-transform: none;
+}
+
+/* FAQ section tab buttons - ensure font size is not overridden by global/responsive rules */
+#faqs .flex.flex-wrap.justify-start button,
+#faqs button[class*="rounded-lg"] {
+    font-size: 18px !important;
+    text-transform: none !important;
+}
+
+.feature-icon {
+    color: #2D5A54;
+}
+
+
+
+/* ============================================
+   CONSISTENT TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Headings - Consistent across all pages */
+h1,
+.heading-1 {
+    font-family: 'Rethink Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1F6861;
+    letter-spacing: 3.5px;
+}
+
+h2,
+.heading-2 {
+    font-family: 'Rethink Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1F6861;
+    letter-spacing: 3px;
+}
+
+h3,
+.heading-3 {
+    font-family: 'Rethink Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #232323;
+    letter-spacing: 2px;
+}
+
+h4,
+.heading-4 {
+    font-family: 'Rethink Sans', sans-serif;
+    font-weight: 600;
+    color: #232323;
+    letter-spacing: 1.5px;
+}
+
+/* About page hero - no max-w-7xl to avoid global overrides, minimal padding */
+app-about-us .about-us-hero-wrapper,
+.about-us-hero-wrapper {
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+app-about-us .about-us-hero-content,
+.about-us-hero-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 767px) {
+
+    app-about-us .about-us-hero-content,
+    .about-us-hero-content {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    app-about-us .about-us-hero-heading,
+    .about-us-hero-heading {
+        left: 1.5rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    app-about-us .about-us-hero-heading,
+    .about-us-hero-heading {
+        left: 6rem !important;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    app-about-us .about-us-hero-heading,
+    .about-us-hero-heading {
+        left: 8rem !important;
+    }
+}
+
+/* Reework page hero - same padding as about-us */
+app-reework .reework-hero-wrapper,
+.reework-hero-wrapper {
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+app-reework .reework-hero-content,
+.reework-hero-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 767px) {
+
+    app-reework .reework-hero-content,
+    .reework-hero-content {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+/* Reework heading - right-aligned (content on right), mirror of about-us left values */
+app-reework .reework-hero-heading,
+.reework-hero-heading {
+    right: 1.5rem !important;
+    left: auto !important;
+}
+
+@media (min-width: 768px) {
+
+    app-reework .reework-hero-heading,
+    .reework-hero-heading {
+        right: 6rem !important;
+        left: auto !important;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    app-reework .reework-hero-heading,
+    .reework-hero-heading {
+        right: 8rem !important;
+        left: auto !important;
+    }
+}
+
+/* About hero image - attach to top and bottom of section */
+app-about-us .about-us-hero-image,
+.about-us-hero-image {
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+}
+
+app-about-us .about-us-hero-image img,
+.about-us-hero-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: right center !important;
+    filter: none !important;
+}
+
+/* Remove any overlay from about-us hero image */
+app-about-us .about-us-hero-image::before,
+app-about-us .about-us-hero-image::after,
+.about-us-hero-image::before,
+.about-us-hero-image::after {
+    display: none !important;
+}
+
+/* Features page hero banner – shift image right for better framing (overrides Tailwind object-top) */
+app-features-page .hero-banner-img {
+    object-position: 20% top !important;
+}
+
+/* Remove any overlay from about-us hero section */
+app-about-us .about-us-hero-wrapper section::before,
+app-about-us .about-us-hero-wrapper section::after,
+.about-us-hero-wrapper section::before,
+.about-us-hero-wrapper section::after {
+    display: none !important;
+}
+
+/* Remove any overlay from go-digital-banner section */
+app-go-digital-banner section::before,
+app-go-digital-banner section::after,
+app-go-digital-banner [class*="absolute"]::before,
+app-go-digital-banner [class*="absolute"]::after {
+    display: none !important;
+}
+
+/* Go-digital-banner subtitle: light font weight (override global p font-weight: 600) */
+app-go-digital-banner .go-digital-banner-subtitle {
+    font-weight: 100 !important;
+}
+
+/* Go-digital-banner title: exactly 2 lines */
+app-go-digital-banner .go-digital-banner-title span {
+    display: block;
+    white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+    app-go-digital-banner .go-digital-banner-title span {
+        white-space: normal;
+    }
+}
+
+/* Custom About Page Headings */
+.about-custom-heading {
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #1F6861;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+
+.about-kit-h3 {
+    text-align: left;
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000000;
+    letter-spacing: 0px;
+}
+
+.about-highlight-text {
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1F6861;
+}
+
+.step-box-title {
+    margin-bottom: 10px;
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #232323;
+}
+
+.step-box-desc {
+    font-family: "Rethink Sans", Sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #000000;
+}
+
+/* Text colors - Consistent across all pages */
+.text-primary {
+    color: #232323;
+}
+
+.text-teal {
+    color: #1F6861;
+}
+
+.text-teal-bright {
+    color: #47CBB6;
+}
+
+.text-dark {
+    color: #1E3A3A;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+/* Background colors - Consistent across all pages */
+.bg-primary {
+    background-color: #F8FEFD;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.bg-teal {
+    background-color: #2D5A54;
+}
+
+.bg-teal-bright {
+    background-color: #47CBB6;
+}
+
+/* ============================================
+   RESPONSIVE STYLES - MOBILE FIRST
+   ============================================ */
+
+/* Mobile Screens (up to 640px) */
+@media (max-width: 640px) {
+    body {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+    }
+
+    p,
+    .text-standard {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        letter-spacing: 2px;
+        line-height: 1.3;
+    }
+
+    .section-title-teal {
+        font-size: 24px;
+        letter-spacing: 2px;
+        line-height: 1.3;
+    }
+
+    .section-title-black {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        line-height: 1.3;
+    }
+
+    .section-subtitle {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    /* Hide images on mobile to prevent cutoff */
+    .mobile-hide-image {
+        display: none !important;
+    }
+
+    /* Responsive hero sections */
+    section[style*="height: 600px"],
+    section[style*="height: 500px"] {
+        height: auto !important;
+        min-height: 400px !important;
+        padding: 60px 0 !important;
+    }
+
+    /* Adjust absolute positioning for mobile */
+    .absolute.left-4.top-1\/2 {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        padding: 20px;
+    }
+
+    .absolute.right-4.top-1\/2 {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        padding: 20px;
+    }
+
+    /* Responsive hero headings */
+    h1[style*="font-size: 250%"] {
+        font-size: 140% !important;
+        letter-spacing: 1.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Responsive hero subtitles */
+    p[style*="font-size: 168.75%"] {
+        font-size: 110% !important;
+        letter-spacing: 1px !important;
+        line-height: 1.3 !important;
+    }
+
+    h2[style*="font-size: 250%"] {
+        font-size: 140% !important;
+        letter-spacing: 1.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Responsive buttons */
+    .btn-teal,
+    .btn-dark,
+    a[class*="bg-[#47CBB6]"],
+    button[class*="bg-[#47CBB6]"] {
+        padding: 12px 20px !important;
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Responsive padding */
+    .py-24 {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+
+    .py-48 {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
+
+    .px-4 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .p-12 {
+        padding: 24px !important;
+    }
+
+    /* Responsive margins */
+    .mb-16 {
+        margin-bottom: 32px !important;
+    }
+
+    .mb-20 {
+        margin-bottom: 40px !important;
+    }
+
+    .mb-24 {
+        margin-bottom: 48px !important;
+    }
+
+    /* Responsive grid gaps */
+    .gap-8 {
+        gap: 16px !important;
+    }
+
+    .gap-12 {
+        gap: 24px !important;
+    }
+
+    .gap-16 {
+        gap: 32px !important;
+    }
+
+    /* Founder section adjustments */
+    .founder-section .rounded-full {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Testimonial cards */
+    .testimonial-card {
+        padding: 24px !important;
+    }
+
+
+}
+
+/* Tablet Screens (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .section-title {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+
+    .section-title-teal {
+        font-size: 32px;
+        letter-spacing: 2.5px;
+    }
+
+    .section-title-black {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .section-subtitle {
+        font-size: 22px;
+    }
+
+    h1[style*="font-size: 250%"] {
+        font-size: 180% !important;
+        letter-spacing: 2.5px !important;
+    }
+
+    p[style*="font-size: 168.75%"] {
+        font-size: 130% !important;
+        letter-spacing: 2px !important;
+    }
+
+    h2[style*="font-size: 250%"] {
+        font-size: 180% !important;
+        letter-spacing: 2.5px !important;
+    }
+
+    section[style*="height: 600px"] {
+        height: 500px !important;
+    }
+
+    section[style*="height: 500px"] {
+        height: 450px !important;
+    }
+
+    .py-24 {
+        padding-top: 64px !important;
+        padding-bottom: 64px !important;
+    }
+}
+
+/* Large Desktop Screens (1025px and up) */
+@media (min-width: 1025px) {
+    /* Keep original styles */
+}
+
+/* Utility classes for responsive images */
+@layer utilities {
+    .responsive-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+        .responsive-img {
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .hero-bg-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @media (max-width: 640px) {
+        .hero-bg-img {
+            object-position: center center;
+            min-height: 400px;
+        }
+    }
+}
+
+/* Responsive container max-widths */
+@media (max-width: 640px) {
+    .max-w-7xl {
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .max-w-5xl,
+    .max-w-4xl {
+        max-width: 100%;
+    }
+}
+
+/* Fix for images that get cut off */
+@media (max-width: 768px) {
+    img[class*="object-cover"] {
+        object-fit: contain !important;
+    }
+
+    /* Keep background images as cover */
+    .absolute img[class*="object-cover"],
+    [class*="bg-"] img[class*="object-cover"] {
+        object-fit: cover !important;
+    }
+}
+
+
+/* Sign-on banner - responsive for tablet & mobile (desktop unchanged) */
+/* Nest Hub Max & similar (1025px–1280px): fix left cutoff from -ml-10 */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    app-sign-on-banner .sign-on-banner-inner {
+        margin-left: 0 !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-content {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    app-sign-on-banner .sign-on-banner-hero {
+        height: 480px !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-content {
+        padding-top: 5rem !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-inner {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-heading {
+        font-size: 36px !important;
+        letter-spacing: 2px !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-cta {
+        margin-top: 2rem !important;
+        padding: 0.75rem 1.5rem !important;
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    app-sign-on-banner .sign-on-banner-hero {
+        height: 400px !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-content {
+        padding-top: 3rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-heading {
+        font-size: 22px !important;
+        letter-spacing: 1px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    app-sign-on-banner .sign-on-banner-cta {
+        margin-top: 1rem !important;
+        padding: 0.6rem 1.25rem !important;
+        font-size: 12px !important;
+    }
+}

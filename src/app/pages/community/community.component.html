@@ -1,0 +1,157 @@
+<div class="community-page-wrapper">
+    <!-- Hero Section -->
+    <section
+        class="community-hero-section relative overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[600px] pt-24 pb-12 md:pt-4 md:pb-6 bg-[#2D5A54] flex items-center">
+        <!-- Background Image Container -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img src="/reecoachcommunitybannerImg.jpeg" alt="Community Member"
+                class="w-full h-full object-cover object-top" />
+        </div>
+
+        <!-- Decorative elements (Positioned relative to full width, z-10 to stay visible) -->
+        <div class="absolute top-12 left-[48%] md:left-[47%] -translate-x-1/2 z-10 hidden md:block">
+            <img src="/vectorImg-3.png" alt="" class="w-14 h-14 md:w-20 md:h-20 object-contain" />
+        </div>
+        <div class="absolute bottom-12 right-16 md:right-24 z-10 hidden lg:block overflow-visible">
+            <img src="/vectorImg-4-1.webp" alt=""
+                class="max-w-[380px] max-h-[145px] w-auto h-auto object-contain opacity-30" />
+        </div>
+
+        <!-- Content Container (Constrained max-width) -->
+        <div
+            class="max-w-7xl mx-auto w-full relative z-10 px-4 md:px-6 lg:px-8 flex justify-start -mt-8 md:-mt-12 lg:-mt-16">
+            <div class="md:max-w-2xl text-white text-left ml-0 md:-ml-6 lg:-ml-8">
+                <h1 style="color: #ffffff; text-shadow: none; line-height: 1.3; font-style: normal; text-decoration: none; text-transform: uppercase; font-weight: 600;"
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-[55px] mb-10 md:mb-16 tracking-wide md:tracking-[3.5px] text-left">
+                    JOIN THE REECOACH<br>ECOSYSTEM
+                </h1>
+                <a routerLink="/become-a-reecoach"
+                    class="bg-[#47CBB6] text-[#000000] px-8 py-3 font-bold text-sm md:text-base uppercase tracking-wider md:tracking-widest shadow-xl hover:bg-[#3ab5a1] transition-all cursor-pointer inline-block">
+                    START YOUR JOURNEY
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (match features page layout) -->
+    <section class="bg-[#1F6861] py-6 md:py-8 px-4 md:px-0">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+            @for (stat of stats; track stat.label) {
+            <div class="text-center py-3 md:py-4">
+                <div class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-2 md:mb-4"
+                    style="font-family: 'Rethink Sans', sans-serif;">
+                    {{stat.current}}{{stat.suffix || ''}}
+                </div>
+                <div class="text-lg md:text-2xl lg:text-[28px] font-semibold text-white uppercase tracking-wide leading-tight px-2"
+                    style='font-family: "Rethink Sans", sans-serif; letter-spacing: 0.6px; color: #FFFFFF;'>
+                    {{stat.label}}
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Locality Forum Section -->
+    <section class="pt-10 bg-white">
+        <div class="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-16 pr-4 md:pr-12 lg:pr-16">
+            <h2 style='font-family: "Rethink Sans", Sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2rem; color: #1F6861;'
+                class="text-left mb-6 md:mb-8 text-[20px] sm:text-[30px] md:text-[39px]">
+                CONNECT WITH REECOACHES IN YOUR LOCALITY
+            </h2>
+            <a [href]="reecoachApplicationUrl" target="_blank"
+                class="inline-block text-center bg-[#47CBB6] text-black px-8 py-3 font-black text-sm md:text-base uppercase tracking-widest cursor-pointer mb-4 w-full md:w-auto">
+                JOIN THE FORUM
+            </a>
+            <div class="py-[10px]">
+                <div class="w-full md:w-[60%] lg:w-[70%] h-[4px] bg-[#00D4B7]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Intro Section -->
+    <section class="py-12 px-4 md:px-12 lg:px-16">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 style='font-family: "Rethink Sans", Sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2rem; color: #000000; text-align: center;'
+                class="mb-4 mx-auto text-[22px] sm:text-[32px] md:text-[40px]">
+                MAKING A DIFFERENCE TO THE DIETETIC COMMUNITY
+            </h2>
+            <p style='text-align: center; font-family: "Rethink Sans", Sans-serif; font-size: 20px; font-weight: 400; color: #000000; line-height: 1.6;'
+                class="mx-auto mb-8 text-base md:text-xl max-w-3xl">
+                Join our vibrant Community Forum and connect with dietitians who share similar interests and goals.
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature Content Sections -->
+    <section>
+        <div class="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-16 pr-4 md:pr-12 lg:pr-16">
+            @for (feature of features; track feature.title) {
+            <div class="flex flex-col items-start gap-12 lg:flex-row py-8"
+                [ngClass]="{'lg:flex-row-reverse': feature.reverse}">
+                <div class="lg:w-3/5 w-full">
+                    <h3 style="font-family: 'Rethink Sans', Sans-serif; font-size: 27px; font-weight: 700; letter-spacing: 2px; color: #1F6861; text-transform: none;"
+                        class="mb-6 text-left text-lg md:text-2xl lg:text-[27px]">{{feature.title}}</h3>
+                    <ul class="space-y-1">
+                        @for (bullet of feature.bullets; track $index) {
+                        <li class="flex gap-4 leading-relaxed text-base md:text-lg lg:text-xl"
+                            style="font-family: 'Rethink Sans', Sans-serif; font-weight: 400; letter-spacing: 0.9px; color: #000000;">
+                            <div class="w-2 h-2 rounded-full bg-[#000000] mt-2.5 flex-shrink-0"></div>
+                            {{bullet}}
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="lg:w-2/5 w-full flex justify-center">
+                    <div class="rounded-sm overflow-hidden shadow-xl w-full max-w-md">
+                        <img [src]="feature.image" [alt]="feature.title" class="w-full h-auto object-cover" />
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Brand Affiliations Text Block -->
+    <section class="pt-12 pb-6 bg-[#E8F7F3] mb-6 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 style='font-family: "Rethink Sans", Sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2rem; color: #1F6861;'
+                class="mb-4 text-[22px] sm:text-[32px] md:text-[40px]">
+                BRAND AFFILIATIONS
+            </h2>
+            <h3 style='text-align: center; font-family: "Rethink Sans", Sans-serif; font-size: 22px; font-weight: 600; text-transform: uppercase; color: #000000; letter-spacing: -0.5px;'
+                class="mb-10 text-lg md:text-xl lg:text-[22px]">Our Dedication to Quality</h3>
+            <p class="mx-auto mb-8 max-w-4xl lg:max-w-6xl text-base md:text-lg lg:text-xl"
+                style='text-align: center; font-family: "Rethink Sans", Sans-serif; font-weight: 400; color: #000000; line-height: 1.6;'>
+                Within Reework, excellence is not just a goal; it is our very foundation. Every product we present
+                undergoes a meticulous selection process, to ensure that only scientific and evidence based the most
+                reputable and nutritionally sound items products reach your hands. Our devotion to transparency means
+                that every piece of nutritional data is exhaustively scrutinised. Furthermore, our stringent criteria
+                are upheld through exhaustive assessments and validations of our partner brands. Additionally, our
+                unwavering commitment to adherence to Good Manufacturing Practices (GMP) is solidified through rigorous
+                site audits.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final Growth Banner -->
+    <section
+        class="relative min-h-[400px] md:min-h-[500px] lg:h-[60vh] flex items-center overflow-hidden py-6 mb-[10px]">
+        <div class="absolute inset-0 z-0">
+            <img src="/reecoachCommuBg.jpeg" alt="Growth and Leadership"
+                class="w-full h-full object-cover object-top" />
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 text-white px-4 md:px-8">
+            <div>
+                <h2 style="font-family: 'Rethink Sans'; color: #ffffff; text-shadow: none; line-height: 1.3; font-style: normal; text-decoration: none; text-transform: uppercase; font-weight: 600;"
+                    class="text-[24px] sm:text-[32px] md:text-[40px] lg:text-5xl mb-8 md:mb-12 tracking-wide md:tracking-[3.5px]">
+                    EMBRACE GROWTH AND <br> LEADERSHIP ON YOUR <br> REECOACH JOURNEY
+                </h2>
+                <a [href]="reecoachApplicationUrl" target="_blank"
+                    class="bg-[#47CBB6] text-[#000000] px-8 py-3 font-semibold text-sm md:text-base uppercase tracking-wider md:tracking-widest shadow-xl hover:bg-[#3ab5a1] transition-all cursor-pointer">
+                    BECOME A MEMBER
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

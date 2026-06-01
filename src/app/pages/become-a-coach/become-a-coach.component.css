@@ -1,0 +1,206 @@
+/* Base wrapper adjustment */
+.become-a-coach-page-wrapper {
+  margin-top: -20px !important;
+}
+
+@media (min-width: 768px) {
+  .become-a-coach-page-wrapper {
+    margin-top: -10px !important;
+  }
+}
+
+/* Hero Section Styles */
+.become-a-coach-hero-h1 {
+  color: #ffffff;
+  font-size: 28px;
+  text-shadow: none;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  text-align: inherit;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.become-a-coach-hero-p {
+  font-family: 'Montserrat';
+  color: #ffffff;
+  font-size: 16px;
+  text-shadow: none;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.become-a-coach-hero-btn,
+.become-a-coach-final-btn {
+  opacity: 1;
+  padding: 10px 25px;
+  background: #00D4B7;
+  font-family: 'Rethink Sans';
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+/* Onboarding Section Styles */
+.become-a-coach-onboarding-header {
+  padding: 40px 20px 20px;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.become-a-coach-onboarding-h2 {
+  font-family: "Rethink Sans", Sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #232323;
+  text-align: center;
+}
+
+.become-a-coach-onboarding-p {
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F6861;
+  text-align: center;
+}
+
+.become-a-coach-steps-container {
+  padding: 20px 20px 40px;
+  max-width: 1140px;
+}
+
+.become-a-coach-step-cta {
+  color: #1F6861;
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Final CTA Section Styles */
+.become-a-coach-final-h3 {
+  font-family: 'Rethink Sans', sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.become-a-coach-final-h2 {
+  font-family: 'Rethink Sans';
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.become-a-coach-final-p {
+  font-family: 'Montserrat';
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Tablet / iPad Adjustments */
+@media (min-width: 768px) {
+  .become-a-coach-hero-h1 {
+    font-size: 60px;
+    letter-spacing: 1.5px;
+  }
+
+  .become-a-coach-hero-p {
+    font-size: 24px;
+  }
+
+  .become-a-coach-onboarding-header {
+    padding: 60px 40px 30px;
+  }
+
+  .become-a-coach-onboarding-h2 {
+    font-size: 36px;
+  }
+
+  .become-a-coach-onboarding-p {
+    font-size: 22px;
+  }
+
+  .become-a-coach-steps-container {
+    padding: 30px 40px 60px;
+  }
+
+  .become-a-coach-final-h3 {
+    font-size: 44px;
+  }
+
+  .become-a-coach-final-h2 {
+    font-size: 32px;
+  }
+}
+
+/* Desktop Styles (Original preserved) */
+@media (min-width: 1024px) {
+  .become-a-coach-hero-h1 {
+    font-size: 375%;
+    letter-spacing: 2px;
+  }
+
+  .become-a-coach-hero-p {
+    font-size: 143.75%;
+  }
+
+  .become-a-coach-hero-btn {
+    font-size: 125%;
+  }
+
+  .become-a-coach-onboarding-header {
+    padding: 60px 0px 0px;
+    margin-top: 0px;
+  }
+
+  .become-a-coach-onboarding-h2 {
+    font-size: 40px;
+    letter-spacing: 0.2rem;
+  }
+
+  .become-a-coach-onboarding-p {
+    font-size: 25px;
+  }
+
+  .become-a-coach-steps-container {
+    padding: 10px 0px 60px;
+    margin-top: 40px;
+  }
+
+  .become-a-coach-step-cta {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .become-a-coach-final-h3 {
+    font-size: 312.5%;
+    letter-spacing: 2.5px;
+  }
+
+  .become-a-coach-final-h2 {
+    font-size: 220%;
+    letter-spacing: 2px;
+  }
+
+  .become-a-coach-final-p {
+    font-size: 140%;
+  }
+
+  .become-a-coach-final-btn {
+    font-size: 110%;
+    letter-spacing: 1px;
+  }
+}

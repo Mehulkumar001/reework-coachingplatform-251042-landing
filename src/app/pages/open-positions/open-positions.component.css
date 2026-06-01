@@ -1,0 +1,17 @@
+/* Ensure long HTML descriptions wrap nicely on mobile */
+.job-description-html {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.job-description-html p,
+.job-description-html ul,
+.job-description-html ol {
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .job-description-html {
+    font-size: 0.875rem;
+  }
+}

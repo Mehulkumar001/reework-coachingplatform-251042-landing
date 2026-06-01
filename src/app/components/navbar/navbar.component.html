@@ -1,0 +1,158 @@
+<nav class="fixed top-0 w-full z-50 bg-[#F5FCFA] border-b-[6px] border-[#B3E5D7] py-[2px] shadow-sm">
+    <div class="px-4 tablet-xl:px-[60px] flex items-center">
+        <!-- Logo (Left) -->
+        <div class="flex items-center cursor-pointer flex-none" routerLink="/">
+            <img src="/logo.png" alt="ReeCoach" class="h-10 sm:h-14 md:h-16 lg:h-20 w-auto" />
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-grow"></div>
+
+        <!-- Desktop Navigation (Center-Left) - shown from 1366px+ (iPad Pro landscape and larger) -->
+        <div class="hidden tablet-xl:flex items-center gap-1 flex-none">
+            <a routerLink="/about-us" routerLinkActive="!text-[#47CBB6]" class="nav-link hover:!text-[#47CBB6]">ABOUT
+                US</a>
+
+            <!-- About ReeCoach Dropdown -->
+            <div class="relative group cursor-pointer h-full py-4 flex items-center ">
+                <span class="nav-link group-hover:!text-[#47CBB6]">ABOUT REECOACH</span>
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="currentColor"
+                    class="text-[#2D5A54] group-hover:text-[#47CBB6] transition-colors">
+                    <path d="M0 0L5 8L10 0H0Z" />
+                </svg>
+
+                <!-- Dropdown Content -->
+                <div
+                    class="absolute top-full left-1/2 -translate-x-1/2 w-60 bg-[#B3E5D7] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-sm overflow-hidden">
+                    <div class="flex flex-col py-2">
+                        <a routerLink="/features"
+                            style="font-family: 'Rethink Sans', Sans-serif; font-size: 13px; font-weight: 400; text-transform: uppercase;"
+                            class="px-6 py-2 text-left text-[#2D5A54] hover:bg-[#A9DBD3] transition-colors">FEATURES</a>
+                        <a routerLink="/"
+                            style="font-family: 'Rethink Sans', Sans-serif; font-size: 13px; font-weight: 400; text-transform: uppercase;"
+                            class="px-6 py-2 text-left text-[#2D5A54] hover:bg-[#A9DBD3] transition-colors">PARTNER
+                            BENEFITS</a>
+                        <a routerLink="/community"
+                            style="font-family: 'Rethink Sans', Sans-serif; font-size: 13px; font-weight: 400; text-transform: uppercase;"
+                            class="px-6 py-2 text-left text-[#2D5A54] hover:bg-[#A9DBD3] transition-colors">COMMUNITY</a>
+                        <a routerLink="/knowledge-repository"
+                            style="font-family: 'Rethink Sans', Sans-serif; font-size: 13px; font-weight: 400; text-transform: uppercase;"
+                            class="px-6 py-2 text-left text-[#2D5A54] hover:bg-[#A9DBD3] transition-colors">KNOWLEDGE
+                            REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+
+            <a routerLink="/become-a-reecoach" routerLinkActive="!text-[#47CBB6]"
+                class="nav-link hover:!text-[#47CBB6]">BECOME A REECOACH</a>
+            <a routerLink="/reework" routerLinkActive="!text-[#47CBB6]"
+                class="nav-link hover:!text-[#47CBB6]">REEWORK</a>
+            <a routerLink="/blogs" routerLinkActive="!text-[#47CBB6]" class="nav-link hover:!text-[#47CBB6]">BLOGS</a>
+            <a routerLink="/contact" routerLinkActive="!text-[#47CBB6]" class="nav-link hover:!text-[#47CBB6]">CONTACT
+                US</a>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-grow"></div>
+
+        <!-- Desktop Action Buttons (Right) -->
+        <div class="hidden tablet-xl:flex items-center gap-3 flex-none">
+            <a [href]="loginUrl" target="_blank"
+                class="bg-[#2D5A54] text-[#F1FFF7] border-l-[6px] border-[#47CBB6] px-6 py-2 rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-[#1E3A3A] transition-all cursor-pointer">LOG
+                IN</a>
+            <a [href]="reecoachApplicationUrl" target="_blank"
+                class="bg-[#47CBB6] text-[#1E3A3A] px-4 py-2 md:px-5 rounded font-bold text-xs md:text-sm uppercase tracking-wider hover:bg-[#3ab5a1] transition-colors cursor-pointer whitespace-nowrap">Join
+                ReeCoach</a>
+        </div>
+
+        <!-- Mobile/Tablet: Login Button + Hamburger Menu (up to 1365px incl. iPad Pro) -->
+        <div class="flex tablet-xl:hidden items-center gap-2 sm:gap-4 ml-auto">
+            <a [href]="loginUrl" target="_blank"
+                class="bg-[#2D5A54] text-[#F1FFF7] border-l-[3px] sm:border-l-[4px] border-[#47CBB6] px-3 sm:px-4 py-1 sm:py-1.5 rounded-sm font-bold text-[10px] sm:text-xs uppercase tracking-wider hover:bg-[#1E3A3A] transition-all cursor-pointer">
+                LOG IN
+            </a>
+            <button (click)="toggleMobileMenu()" class="p-1 text-[#1E3A3A] hover:text-[#47CBB6] transition-colors"
+                aria-label="Toggle menu">
+                <i-lucide [img]="isMobileMenuOpen ? X : Menu" size="28" strokeWidth="2"></i-lucide>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu - Full Screen -->
+    <div *ngIf="isMobileMenuOpen" class="fixed inset-0 bg-white z-50 tablet-xl:hidden overflow-y-auto"
+        style="top: 0; left: 0; right: 0; bottom: 0;">
+
+        <!-- Mobile Menu Header -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+            <img src="/logo.png" alt="ReeCoach" class="h-10 w-auto" />
+            <button (click)="closeMobileMenu()" class="p-2 text-[#1E3A3A] hover:text-[#47CBB6] transition-colors">
+                <i-lucide [img]="X" size="28" strokeWidth="2"></i-lucide>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Items -->
+        <div class="flex flex-col p-4 space-y-2 min-h-[calc(100vh-120px)]">
+            <a routerLink="/about-us" (click)="closeMobileMenu()" routerLinkActive="text-[#47CBB6] bg-[#F8FEFD]"
+                class="px-4 py-4 text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded">
+                ABOUT US
+            </a>
+
+            <!-- Mobile About ReeCoach Dropdown -->
+            <div class="border-l-2 border-[#47CBB6]/20">
+                <button (click)="toggleAboutDropdown()"
+                    class="w-full px-4 py-4 text-left text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded flex justify-between items-center">
+                    <span>ABOUT REECOACH</span>
+                    <i-lucide [img]="ChevronDown" size="20" [class.rotate-180]="isAboutDropdownOpen"
+                        class="transition-transform duration-200"></i-lucide>
+                </button>
+
+                <div *ngIf="isAboutDropdownOpen" class="bg-[#F8FEFD] ml-4 mt-1 rounded overflow-hidden">
+                    <a routerLink="/features" (click)="closeMobileMenu()"
+                        class="block px-4 py-3 text-[#2D5A54] font-bold text-sm uppercase tracking-wider hover:bg-[#BCE8E1] transition-colors">
+                        FEATURES
+                    </a>
+                    <a routerLink="/community" (click)="closeMobileMenu()"
+                        class="block px-4 py-3 text-[#2D5A54] font-bold text-sm uppercase tracking-wider hover:bg-[#BCE8E1] transition-colors">
+                        COMMUNITY
+                    </a>
+                    <a routerLink="/knowledge-repository" (click)="closeMobileMenu()"
+                        class="block px-4 py-3 text-[#2D5A54] font-bold text-sm uppercase tracking-wider hover:bg-[#BCE8E1] transition-colors">
+                        KNOWLEDGE REPOSITORY
+                    </a>
+                </div>
+            </div>
+
+            <a routerLink="/become-a-reecoach" (click)="closeMobileMenu()"
+                routerLinkActive="text-[#47CBB6] bg-[#F8FEFD]"
+                class="px-4 py-4 text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded">
+                BECOME A REECOACH
+            </a>
+
+            <a routerLink="/reework" (click)="closeMobileMenu()" routerLinkActive="text-[#47CBB6] bg-[#F8FEFD]"
+                class="px-4 py-4 text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded">
+                REEWORK
+            </a>
+
+            <a routerLink="/blogs" (click)="closeMobileMenu()" routerLinkActive="text-[#47CBB6] bg-[#F8FEFD]"
+                class="px-4 py-4 text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded">
+                BLOGS
+            </a>
+
+            <a routerLink="/contact" (click)="closeMobileMenu()" routerLinkActive="text-[#47CBB6] bg-[#F8FEFD]"
+                class="px-4 py-4 text-[#1E3A3A] font-bold text-base uppercase tracking-wider hover:bg-[#F8FEFD] hover:text-[#47CBB6] transition-colors rounded">
+                CONTACT US
+            </a>
+
+            <!-- Spacer to push button to bottom -->
+            <div class="flex-grow"></div>
+
+            <!-- Join ReeCoach Button at Bottom -->
+            <div class="pt-6 pb-4 border-t border-gray-200 mt-auto sticky bottom-0 bg-white">
+            <a [href]="reecoachApplicationUrl" target="_blank" (click)="closeMobileMenu()"
+                    class="block text-center bg-[#47CBB6] text-[#1E3A3A] px-6 py-4 rounded-lg font-black text-base uppercase tracking-wider hover:bg-[#3ab5a1] transition-colors shadow-lg cursor-pointer">
+                    Join ReeCoach
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

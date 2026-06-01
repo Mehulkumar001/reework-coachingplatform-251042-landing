@@ -1,0 +1,595 @@
+:host {
+  display: block;
+  font-family: var(--font-family);
+}
+
+.container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.careers-hero {
+  padding: 160px 0 190px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  /* Use ReeCoach careers banner image (same as open-positions hero) */
+  background-image: url('/careerBg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-container {
+  width: min(2000px, calc(100% - 140px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 640px;
+  padding: 32px 32px 28px;
+  margin-left: 8%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  color: #1f2933;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background-color: rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+}
+
+.hero-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: #47cbb6;
+}
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  color: #2D5A54;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 10px;
+  color: #3e4c4a;
+}
+
+.hero-subtext {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  color: #556c68;
+}
+
+.job-openings-btn {
+  padding: 14px 40px;
+  min-width: 0;
+  border-radius: 999px;
+  border: none;
+  background-color: #1F6861;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-left: 0;
+  margin-top: 10px;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.job-openings-btn:hover {
+  background-color: #15514a;
+  transform: translateY(-1px);
+}
+
+/* Who Are We Section */
+.who-are-we {
+  padding: 60px 0 60px;
+  background-color: #ffffff;
+}
+
+.section-title {
+  font-size: 40px !important;
+  font-weight: 600;
+  color: #1F6861 !important;
+  text-align: center;
+  margin: 0 0 30px;
+  text-transform: uppercase !important;
+  letter-spacing: 3px;
+}
+
+.who-intro {
+  text-align: center;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: 200 !important;
+  max-width: none;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+.who-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.who-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  text-align: left;
+  padding: 8px 0;
+}
+
+.who-icon {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.who-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.who-text-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.who-subtitle {
+  font-size: 20px !important;
+  font-weight: 500;
+  color: #1F6861 !important;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: 1.5px;
+}
+
+.who-description {
+  font-size: 18px !important;
+  line-height: 1.8;
+  color: #232323 !important;
+  font-weight: 500 !important;
+  margin: 0;
+  max-width: 100%;
+  padding-right: 20px;
+}
+
+/* Team Photos Section */
+.team-photos {
+  padding: 40px 0;
+  background-color: transparent;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 0.85fr;
+  gap: 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Image 3 (bottom-left) - increase width, reduce height */
+.photos-grid .photo-item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+  width: 130%;
+  max-width: none;
+  overflow: hidden;
+}
+
+.photos-grid .photo-item:nth-child(3) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image 4 (bottom-right) - reduce width, reduce height */
+.photos-grid .photo-item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+  width: 70%;
+  max-width: none;
+  justify-self: end;
+  overflow: hidden;
+}
+
+.photos-grid .photo-item:nth-child(4) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-item {
+  width: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Employee Benefits Section */
+.employee-benefits {
+  padding: 60px 0 80px;
+  background-color: #ffffff;
+}
+
+.employee-benefits .section-title {
+  font-size: 40px !important;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #1F6861 !important;
+  text-transform: uppercase !important;
+}
+
+.employee-benefits .container {
+  width: min(1140px, calc(100% - 40px));
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  padding: 26px 20px;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-card.teal-bg {
+  background-color: #00cba9;
+}
+
+.benefit-card.grey-bg {
+  background-color: #f5f5f5;
+}
+
+.benefit-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-icon img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.benefit-text {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  max-width: none;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+.benefit-card.teal-bg .benefit-text {
+  color: #ffffff;
+}
+
+.benefit-card.grey-bg .benefit-text {
+  color: #000000;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .careers-hero {
+    padding: 120px 0 150px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photos-grid {
+    gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .careers-hero {
+    padding: 90px 0 110px;
+  }
+
+  .hero-container {
+    width: calc(100% - 40px);
+  }
+
+  .hero-content {
+    justify-content: center;
+  }
+
+  .job-openings-btn {
+    margin-left: 0;
+    margin-top: 18px;
+    width: auto;
+    max-width: 100%;
+    min-width: unset;
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+
+  .hero-copy {
+    margin-left: 0;
+    padding-inline: 18px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-subtitle,
+  .hero-subtext {
+    font-size: 13px;
+  }
+
+  .hero-title {
+    font-size: 42px;
+    letter-spacing: 2px;
+  }
+
+  .hero-btn {
+    padding: 16px 35px;
+    font-size: 16px;
+  }
+
+  .hero-graphics {
+    min-height: 400px;
+  }
+
+  .device-laptop {
+    width: 250px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  .device-phones {
+    margin-top: -40px;
+    gap: 15px;
+  }
+
+  .phone-card {
+    width: 90px;
+    height: 110px;
+  }
+
+  .phone-number {
+    font-size: 36px;
+  }
+
+  .phone-device {
+    width: 80px;
+    height: 130px;
+  }
+
+  .section-title {
+    font-size: 30px;
+    color: #1F6861 !important;
+    text-transform: uppercase !important;
+  }
+
+  .employee-benefits .section-title {
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: #1F6861 !important;
+    text-transform: uppercase !important;
+  }
+
+  .who-content {
+    gap: 20px;
+  }
+
+  .who-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .who-description {
+    padding-right: 0;
+  }
+
+  .who-intro {
+    font-size: 16px !important;
+  }
+
+  .photos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photos-grid .photo-item:nth-child(3),
+  .photos-grid .photo-item:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    justify-self: auto;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card {
+    min-height: 130px;
+    padding: 22px 16px;
+  }
+}
+
+/* Small screens (480px and below - e.g. iPhone SE) */
+@media (max-width: 480px) {
+  .container {
+    width: min(1200px, calc(100% - 24px));
+  }
+
+  .careers-hero {
+    padding: 60px 0 80px;
+  }
+
+  .hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .who-are-we {
+    padding: 40px 0 40px;
+  }
+
+  .who-content {
+    padding: 0 16px;
+    gap: 24px;
+  }
+
+  .who-item {
+    gap: 20px;
+    padding: 12px 0;
+  }
+
+  .who-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .who-subtitle {
+    font-size: 17px !important;
+  }
+
+  .who-description {
+    font-size: 15px !important;
+    line-height: 1.6;
+  }
+
+  .who-intro {
+    font-size: 15px !important;
+    padding: 0 8px;
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: 24px !important;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .employee-benefits {
+    padding: 40px 0 56px;
+  }
+
+  .job-openings-btn {
+    margin-top: 16px;
+    font-size: 15px;
+    padding: 12px 20px;
+  }
+
+  .employee-benefits .section-title {
+    font-size: 24px !important;
+    letter-spacing: 1.5px;
+  }
+
+  .employee-benefits .container {
+    width: calc(100% - 24px);
+  }
+
+  .benefits-grid {
+    gap: 16px;
+  }
+
+  .benefit-card {
+    min-height: 120px;
+    padding: 18px 14px;
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+  }
+
+  .benefit-text {
+    font-size: 15px !important;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+
+  .team-photos {
+    padding: 24px 0;
+  }
+
+  .photos-grid {
+    max-width: 100%;
+    padding: 0 12px;
+  }
+}

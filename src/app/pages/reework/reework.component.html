@@ -1,0 +1,131 @@
+<div class="reework-page-wrapper pt-0">
+    <!-- Hero Section - same structure as about-us for consistent padding -->
+    <div class="reework-hero-wrapper">
+        <section
+            class="relative bg-[#2D5A54] overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px] pt-0 pb-6 md:pt-1 md:pb-6 flex items-center">
+            <!-- Background Image -->
+            <img src="/reeworkBannerImg.jpeg" alt="Transform Health"
+                class="absolute inset-0 w-full h-full object-cover object-center md:object-top" />
+
+            <div class="w-full relative px-4 md:px-12 lg:px-24 py-16">
+                <!-- Heading - right-aligned on desktop to match layout -->
+                <div class="z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                    <h1 class="reework-hero-title mb-4 tracking-wide md:tracking-[3.5px]">
+                        TRANSFORM THE WAY<br>
+                        YOU PERCEIVE YOUR<br>
+                        HEALTH
+                    </h1>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Welcome Section -->
+    <section class="pt-10 md:pt-16 pb-6 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="reework-section-title">
+                A KEY TO LEADING A HEALTHY LIFESTYLE
+            </h2>
+
+            <p class="reework-section-desc mt-3">
+                Reework is an app for your clients to engage into behavioural change and habit formation.
+            </p>
+        </div>
+
+        <!-- Full width divider -->
+        <div class="reework-divider-container">
+            <div class="reework-divider"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-[#F8FEFD] py-6 md:py-0">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="reework-section-title whitespace-normal md:whitespace-nowrap py-0 my-0">
+                WHAT’S IN IT FOR YOUR CLIENT (REEWORKER)?
+            </h2>
+        </div>
+    </section>
+
+    @for (feature of features; track feature.title) {
+    <section class="py-10 md:py-6 bg-white" [ngClass]="feature.reverse ? 'bg-[#F8FEFD]' : ''">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-start gap-8 md:gap-16"
+            [ngClass]="feature.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'">
+            <div class="lg:w-1/2 w-full">
+                <div class="relative group">
+                    <img [src]="feature.image" [alt]="feature.title"
+                        class="relative rounded-2xl border border-gray-100 w-full h-auto" />
+                </div>
+            </div>
+            <div class="lg:w-1/2 w-full">
+                <h3 class="reework-feature-title text-left mb-4">{{feature.title}}</h3>
+                <p class="reework-text-content mb-4 text-black">
+                    {{feature.subtitle}}
+                </p>
+                <ul class="reework-text-content pl-6">
+                    @for (bullet of feature.bullets; track $index) {
+                    <li class="flex items-center gap-4 text-[#1F6861]">
+                        <div class="w-2 h-2 rounded-full bg-[#1F6861] flex-shrink-0"></div>
+                        {{bullet}}
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+    }
+
+    <!-- Benefits Grid -->
+    <section class="pt-10 md:pt-10 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+                <div class="inline-block">
+                    <div class="reework-teal-bar"></div>
+                    <h2 class="reework-section-title mb-0">WHAT'S IN IT FOR THE REEWORKER</h2>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-[30px] py-10 md:py-8">
+                <!-- Phone Image Column -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="relative w-full max-w-[240px] md:max-w-[300px]">
+                        <img [src]="sliderImages[currentImageIndex]" alt="Reeworker App" class="w-full" />
+                    </div>
+                </div>
+
+                <!-- Benefit Cards Grid -->
+                <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-[30px] md:gap-y-[35px]">
+                    @for (benefit of benefits; track $index) {
+                    <div class="reework-benefit-card">
+                        <p class="reework-benefit-text">
+                            {{benefit}}
+                        </p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="relative pt-10 md:pt-10 overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+        <div class="absolute inset-0 z-0">
+            <img src="/reeworkBtmBannerImg.jpeg" alt="Take Charge" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="max-w-7xl mx-auto h-full relative px-6 md:px-6 lg:px-8 flex items-center justify-start">
+            <div class="relative text-left py-20 md:py-24 ml-0 md:ml-7">
+                <h2
+                    class="reework-cta-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-10 tracking-wide md:tracking-[3.5px]">
+                    TAKE CHARGE OF YOUR<br>
+                    CLIENTS HEALTH WITH<br>
+                    REEWORK
+                </h2>
+                <div class="h-8"></div>
+                <a routerLink="/become-a-reecoach"
+                    class="bg-[#47CBB6] text-[#1E3A3A] px-8 py-3 font-black text-xs md:text-sm uppercase tracking-wider md:tracking-widest hover:bg-[#3ab5a1] transition-all inline-block cursor-pointer">
+                    START YOUR JOURNEY
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

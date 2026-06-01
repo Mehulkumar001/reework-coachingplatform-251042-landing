@@ -1,0 +1,87 @@
+<section id="testimonials" class="pt-8 md:pt-12 pb-12 md:pb-16 bg-white relative overflow-hidden" (mousedown)="onMouseDown($event)"
+    (mouseup)="onMouseUp($event)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    <div class="max-w-7xl mx-auto px-3 md:px-4 relative z-10">
+        <h2 class="custom-section-title text-center mb-8 md:mb-12 text-2xl md:text-[35px] font-medium text-[#232323] capitalize">
+            Testimonials
+        </h2>
+
+        <div class="relative px-4 md:px-12">
+            <!-- Left Arrow -->
+            <button (click)="prev()"
+                class="absolute left-0 top-1/2 -translate-y-1/2 text-[#1F6861] hover:scale-110 transition-all z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+                <i-lucide [img]="ChevronLeft" [attr.size]="24" strokeWidth="2" class="md:w-8 md:h-8 w-6 h-6"></i-lucide>
+            </button>
+
+            <!-- Slider Viewport: padding keeps rounded corners from being clipped during slide -->
+            <div class="overflow-hidden w-full py-2 px-1 md:py-3 md:px-2">
+                <div class="flex transition-transform duration-700 ease-out will-change-transform"
+                    [style.width.%]="containerWidthPercent"
+                    [style.transform]="'translateX(-' + transformPercent + '%)'">
+
+                    @for (item of items; track $index) {
+                    <div class="flex-shrink-0 select-none px-3 md:px-5"
+                        [style.width.%]="items.length ? 100 / items.length : 100"
+                        [style.minWidth.%]="items.length ? 100 / items.length : 100">
+
+                        <div
+                            class="bg-[#EAF7F3] p-5 pt-5 md:p-7 md:pt-7 flex flex-col items-center text-center relative transition-all duration-300 h-full min-h-[280px] md:min-h-[320px] justify-start rounded-xl md:rounded-2xl border border-[#d4ede9] shadow-md hover:shadow-lg overflow-hidden">
+                            <div class="relative z-10 flex flex-col h-full w-full max-w-[380px] md:max-w-[380px] items-center justify-start text-center">
+                                <div class="mb-4 md:mb-6">
+                                    <p class="text-[#232323] font-normal text-sm md:text-[16px] leading-relaxed tracking-wide line-clamp-4 md:line-clamp-5">
+                                        {{ item.content }}
+                                    </p>
+                                </div>
+                                <div class="flex flex-col items-center justify-center text-center">
+                                    @if (getStars(item.rating ?? 5).length) {
+                                    <div class="flex gap-0.5 md:gap-1 mb-1.5 md:mb-2 justify-center text-[#1F6861] text-sm md:text-base">
+                                        <span *ngFor="let _ of getStars(item.rating ?? 5)">★</span>
+                                    </div>
+                                    }
+                                    <h4 class="text-[#1F6861] font-bold text-base md:text-xl uppercase mb-1 md:mb-1.5 tracking-wide">
+                                        {{ item.name }}
+                                    </h4>
+                                    @if (item.profileImageUrl) {
+                                    <img [src]="item.profileImageUrl" [alt]="item.name"
+                                        class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover mb-2 md:mb-3" />
+                                    } @else {
+                                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full mb-2 md:mb-3 flex items-center justify-center text-white text-base md:text-xl font-semibold bg-gradient-to-br from-[#1F6861] to-[#47CBB6]">
+                                        {{ getInitials(item.name) }}
+                                    </div>
+                                    }
+                                    @if (item.title) {
+                                    <p class="text-[#1F6861] font-normal text-xs md:text-base uppercase tracking-wide text-center">
+                                        {{ item.title }}
+                                    </p>
+                                    }
+                                    @if (item.experience) {
+                                    <p class="text-[#1F6861] font-semibold text-xs md:text-base uppercase tracking-wide mt-0.5 text-center">
+                                        {{ item.experience }}
+                                    </p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button (click)="next()"
+                class="absolute right-0 top-1/2 -translate-y-1/2 text-[#1F6861] hover:scale-110 transition-all z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+                <i-lucide [img]="ChevronRight" [attr.size]="24" strokeWidth="2" class="md:w-8 md:h-8 w-6 h-6"></i-lucide>
+            </button>
+        </div>
+
+        <!-- Dots -->
+        @if (totalPages > 0) {
+        <div class="flex justify-center gap-2 md:gap-2.5 mt-8 md:mt-14">
+            @for (i of [].constructor(totalPages); track $index) {
+            <button (click)="set($index)" class="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full transition-all duration-300"
+                [ngClass]="currentPage() === $index ? 'bg-[#1F6861]' : 'bg-[#1F6861] opacity-30 hover:opacity-50'">
+            </button>
+            }
+        </div>
+        }
+    </div>
+</section>

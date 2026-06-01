@@ -1,0 +1,107 @@
+<section class="feedback-page">
+  <div class="feedback-hero">
+    <h1 class="hero-title">Share your ReeCoach story</h1>
+    <p class="hero-subtitle">
+        Whether you are a ReeCoach or a clinic partner, your experience helps us shape the product roadmap and support
+        tooling.
+    </p>
+    <ul class="hero-bullets">
+        <li>Tell us what makes your workflow smoother</li>
+        <li>Highlight gaps or friction in the platform</li>
+        <li>Suggest new features you’d love to see</li>
+    </ul>
+    <div class="hero-note">
+      <span class="hero-note-icon" aria-hidden="true">✓</span>
+      Feedback from our practitioners and partners is reviewed regularly so we can prioritise what matters most to your practice.
+    </div>
+  </div>
+
+  <div class="feedback-container">
+    <h2>Share Your Feedback</h2>
+    <p class="intro">
+      A short note is enough—every submission is read by our team.
+    </p>
+
+    <form class="feedback-form" (submit)="$event.preventDefault()">
+      <div class="field">
+        <label>Your Name <span>*</span></label>
+        <input
+          type="text"
+          placeholder="Your name"
+          maxlength="70"
+          [(ngModel)]="feedbackForm.name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label>Your Email <span>*</span></label>
+        <input
+          type="email"
+          placeholder="you@example.com"
+          maxlength="60"
+          [(ngModel)]="feedbackForm.email"
+          name="email"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label>Contact Number</label>
+        <input
+          type="tel"
+          placeholder="+91XXXXXXXXXX"
+          maxlength="20"
+          [(ngModel)]="feedbackForm.phone"
+          name="phone"
+        />
+      </div>
+
+      <div class="field">
+        <label>How would you rate your experience?</label>
+        <div class="rating-row" aria-label="Rate your experience">
+          <button
+            type="button"
+            class="rating-pill"
+            *ngFor="let r of ratingOptions"
+            (click)="setRating(r)"
+            [class.active]="feedbackForm.rating === r"
+            [attr.aria-label]="getRatingLabel(r)"
+          >
+            <span class="emoji" *ngIf="r === 1">😞</span>
+            <span class="emoji" *ngIf="r === 2">🙁</span>
+            <span class="emoji" *ngIf="r === 3">😐</span>
+            <span class="emoji" *ngIf="r === 4">🙂</span>
+            <span class="emoji" *ngIf="r === 5">🤩</span>
+            <span class="rating-label">{{ getRatingLabel(r) }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Your Feedback <span>*</span></label>
+        <textarea
+          rows="5"
+          placeholder="Tell us what you liked or what we can improve."
+          maxlength="500"
+          [(ngModel)]="feedbackForm.message"
+          name="message"
+          required
+        ></textarea>
+      </div>
+
+      <button type="button" class="submit-button" (click)="onSubmit()" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Submitting...' : 'Submit Feedback' }}
+      </button>
+
+      <div *ngIf="submitSuccess" class="alert alert-success">
+        Thank you! Your feedback has been submitted successfully.
+      </div>
+      <div *ngIf="submitError" class="alert alert-danger">
+        {{ submitError }}
+      </div>
+    </form>
+  </div>
+</section>
+

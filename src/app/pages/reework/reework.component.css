@@ -1,0 +1,272 @@
+/* Hero title - 55px on desktop, responsive on mobile */
+.reework-hero-title {
+  font-family: 'Rethink Sans';
+  color: #ffffff;
+  text-shadow: none;
+  line-height: 1.2;
+  /* Tighten line height for multi-line on mobile */
+  font-style: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 22px !important;
+  /* Smaller on very small mobile */
+  text-align: center;
+}
+
+
+@media (min-width: 480px) {
+  .reework-hero-title {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .reework-hero-title {
+    font-size: 36px !important;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .reework-hero-title {
+    font-size: 55px !important;
+    text-align: left;
+  }
+}
+
+/* Reduce gap between header and hero section */
+.reework-page-wrapper {
+  margin-top: -20px !important;
+}
+
+@media (min-width: 768px) {
+  .reework-page-wrapper {
+    margin-top: -10px !important;
+  }
+}
+
+/* Hero heading positioning */
+.reework-hero-heading {
+  padding-top: 112px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .reework-hero-heading {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: flex-start;
+    margin-top: 112px;
+    /* mt-28 */
+    transform: translate(48px, -50%);
+    /* translate-x-12 + previous translate-y */
+    width: auto;
+  }
+}
+
+/* Section titles - 40px on desktop, smaller on mobile */
+.reework-section-title {
+  font-family: "Rethink Sans", Sans-serif;
+  font-size: 18px;
+  /* Smaller on mobile */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  /* Reduced letter spacing on mobile */
+  color: #000000;
+  line-height: 1.25;
+  text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .reework-section-title {
+    font-size: 32px;
+    letter-spacing: 0.18rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reework-section-title {
+    font-size: 40px;
+    letter-spacing: 0.2rem;
+  }
+}
+
+/* Section description - 20px on desktop, smaller on mobile */
+.reework-section-desc {
+  font-family: "Rethink Sans", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .reework-section-desc {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reework-section-desc {
+    font-size: 20px;
+  }
+}
+
+/* Adjust divider padding on mobile */
+@media (max-width: 767px) {
+  .reework-divider-container {
+    padding-block: 15px;
+  }
+}
+
+
+/* Divider styling */
+.reework-divider-container {
+  padding-block: 25px;
+  width: 100%;
+}
+
+.reework-divider {
+  border-top: 2px solid #1F686173;
+  width: 100%;
+}
+
+/* Benefits teal bar */
+.reework-teal-bar {
+  border-top: 6.5px solid #00D4B7;
+  width: 35%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .reework-teal-bar {
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Benefit card */
+.reework-benefit-card {
+  background-color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.3s ease;
+  padding: 20px;
+  min-height: 120px;
+  border-left: 5px solid #00D4B7;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
+}
+
+.reework-benefit-card:hover {
+  background-color: #E2FDF6;
+}
+
+@media (min-width: 768px) {
+  .reework-benefit-card {
+    margin-left: 20px;
+    min-height: 140px;
+  }
+}
+
+/* Feature title - 27px on desktop, smaller on mobile */
+.reework-feature-title {
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 18px;
+  /* Smaller on mobile */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1F6861;
+}
+
+@media (min-width: 768px) {
+  .reework-feature-title {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .reework-feature-title {
+    font-size: 27px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Feature description & list items - 20px on desktop, smaller on mobile */
+.reework-text-content {
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 14px;
+  /* Smaller on mobile */
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .reework-text-content {
+    font-size: 16px;
+    letter-spacing: 0.6px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .reework-text-content {
+    font-size: 20px;
+    letter-spacing: 0.9px;
+    line-height: 1.6;
+  }
+}
+
+/* Benefit cards text - 18px on desktop, smaller on mobile */
+.reework-benefit-text {
+  font-family: "Rethink Sans", Sans-serif;
+  font-size: 13px;
+  /* Smaller on mobile */
+  letter-spacing: 0.3px;
+  color: #000000;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .reework-benefit-text {
+    font-size: 15px;
+    letter-spacing: 0.4px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .reework-benefit-text {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+  }
+}
+
+/* Bottom CTA Header */
+.reework-cta-title {
+  font-family: 'Rethink Sans';
+  text-shadow: none;
+  line-height: 1.2;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ffffff;
+}

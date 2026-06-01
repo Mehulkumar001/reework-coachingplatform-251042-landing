@@ -1,0 +1,25 @@
+/* Gap between header and hero section */
+.community-page-wrapper {
+  margin-top: 8px !important;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .community-page-wrapper {
+    margin-top: -9px !important;
+  }
+}
+
+/* Responsive - ensure no horizontal overflow on mobile */
+@media (max-width: 767px) {
+  .community-hero-section h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .community-hero-section h1 {
+    font-size: 1.5rem !important;
+  }
+}

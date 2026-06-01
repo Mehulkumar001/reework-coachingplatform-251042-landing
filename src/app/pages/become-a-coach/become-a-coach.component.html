@@ -1,0 +1,118 @@
+<div class="become-a-coach-page-wrapper pt-0">
+    <!-- Hero Section -->
+    <section
+        class="relative bg-[#2D5A54] overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="/careerBg-hero.png"
+                alt="Help Curate Health" class="w-full h-full object-cover object-top" />
+            <div class="absolute inset-0"
+                style="background: linear-gradient(to right, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0) 100%);"></div>
+        </div>
+
+        <div class="w-full relative pl-6 md:pl-[60px] lg:pl-[120px] z-10 py-12 md:py-16">
+            <!-- Heading -->
+            <div class="flex flex-col items-start">
+                <h1 class="become-a-coach-hero-h1 mb-8 md:mb-12">
+                    HELP CURATE<br class="hidden md:block"> PEOPLE'S HEALTH
+                </h1>
+                <p class="become-a-coach-hero-p mb-6 md:mb-8 max-w-[280px] md:max-w-none">
+                    Embrace the smart approach, begin your<br class="hidden md:block"> ReeCoach journey
+                </p>
+                <a [href]="reecoachApplicationUrl" target="_blank"
+                    class="become-a-coach-hero-btn inline-flex items-center hover:bg-[#3ab5a1] cursor-pointer">
+                    CLICK HERE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Onboarding Section -->
+    <section id="applySection" class="pt-[80px] -mt-[80px] relative z-10">
+        <div class="become-a-coach-onboarding-header mx-auto text-center">
+            <h2 class="become-a-coach-onboarding-h2">
+                APPLY AS A REECOACH
+            </h2>
+            <p class="become-a-coach-onboarding-p mt-2">
+                Get Onboard as a ReeCoach in 4 easy steps!
+            </p>
+        </div>
+
+        <div class="become-a-coach-steps-container mx-auto">
+            <div class="flex flex-col lg:flex-row gap-6 items-start">
+                <!-- Left Image -->
+                <div class="lg:w-[35%] w-full">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="/APPLY AS A REECOACH.png"
+                            alt="Application Process" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+
+                <!-- Steps -->
+                <div class="lg:w-[65%] w-full space-y-12">
+                    @for (step of steps; track step.id) {
+                    <div class="flex gap-6 group">
+                        <div
+                            class="flex-shrink-0 text-[#1F6861] font-light text-[20px] md:text-[25px] w-8 md:w-14 text-center">
+                            {{step.id}}
+                        </div>
+                        <div class="w-[1px] bg-[#1F6861] self-stretch"></div>
+                        <div class="flex flex-col pl-0 md:pl-16">
+                            <h4 class="step-box-title mb-1">
+                                {{step.title}}
+                            </h4>
+                            <p class="step-box-desc !mb-1">
+                                {{step.desc}}
+                            </p>
+                            @if (step.cta) {
+                            <a [href]="reecoachApplicationUrl" target="_blank"
+                                class="become-a-coach-step-cta text-left hover:opacity-80 transition-opacity cursor-pointer">
+                                {{step.cta}}
+                            </a>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section
+        class="relative overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px] mb-[10px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="/nextStepBanner (1).jpeg" alt="Take Next Step" class="w-full h-full object-cover object-top" />
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <!-- Overlays -->
+        <div class="absolute inset-0 z-10 pointer-events-none">
+            <img src="/takeStepVectorImg-2.png" alt=""
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-[60px] opacity-60" />
+            <img src="/takeStepVectorImg-1.png" alt=""
+                class="absolute bottom-0 right-0 w-[120px] md:w-[180px] opacity-70" />
+        </div>
+
+        <div class="w-full relative pl-6 md:pl-[60px] lg:pl-[120px] z-20 py-16">
+            <!-- Content -->
+            <div class="flex flex-col items-start z-10">
+                <h3 class="become-a-coach-final-h3 mb-6 md:mb-8">
+                    TAKE THE NEXT STEP
+                </h3>
+                <h2 class="become-a-coach-final-h2 mb-6 md:mb-8">
+                    SERVE A LARGER CLIENT BASE
+                </h2>
+                <p class="become-a-coach-final-p mb-8 md:mb-10 max-w-xl">
+                    Streamline your practice with <br class="hidden md:block"> tailored plans with a user-friendly <br
+                        class="hidden md:block"> platform.
+                </p>
+                <a [href]="reecoachApplicationUrl" target="_blank"
+                    class="become-a-coach-final-btn inline-flex items-center hover:bg-[#3ab5a1] cursor-pointer">
+                    CLICK HERE TO SIGN UP
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

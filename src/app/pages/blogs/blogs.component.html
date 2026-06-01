@@ -1,0 +1,391 @@
+<div class="blogs-page bg-white min-h-screen" [class.detail-mode]="!!selectedPost">
+    @if (!selectedPost) {
+    <div class="blogs-container">
+        <!-- Page Heading + Breadcrumb -->
+        <div class="blogs-header">
+            <div class="breadcrumbs">
+                <a href="/">Home</a>
+                <span class="divider">›</span>
+                <span class="current">Latest Blogs</span>
+            </div>
+            <h1 class="section-title text-center"
+                style="color: #000000 !important; font-weight: 600; letter-spacing: 3px;">LATEST BLOGS</h1>
+        </div>
+
+        <!-- Category Carousel with Arrows -->
+        <div class="blogs-filters-wrapper" *ngIf="!isLoadingCategories">
+            <button 
+                *ngIf="showCarouselArrows"
+                type="button" 
+                class="carousel-arrow carousel-arrow-left" 
+                aria-label="Scroll categories left"
+                (click)="scrollCarousel('left')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="blogs-filters-carousel" #categoryCarousel>
+                <button 
+                    *ngFor="let cat of displayCategories" 
+                    class="filter-pill" 
+                    [class.active]="isFilterActive(cat)"
+                    (click)="setFilter(cat)">
+                    {{ cat.name }}
+                </button>
+            </div>
+            <button 
+                *ngIf="showCarouselArrows"
+                type="button" 
+                class="carousel-arrow carousel-arrow-right" 
+                aria-label="Scroll categories right"
+                (click)="scrollCarousel('right')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Loading State: skeleton cards -->
+        <div class="blogs-grid blogs-skeleton-grid" *ngIf="isLoading">
+            <article class="blog-card blog-card-skeleton" *ngFor="let _ of [1,2,3,4,5,6]">
+                <div class="card-image skeleton-block"></div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="skeleton-inline skeleton-meta"></span>
+                        <span class="skeleton-inline skeleton-meta"></span>
+                    </div>
+                    <div class="skeleton-block skeleton-title"></div>
+                    <div class="skeleton-block skeleton-line"></div>
+                    <div class="skeleton-block skeleton-line short"></div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Empty state fallback -->
+        <div *ngIf="!isLoading && posts.length === 0"
+            class="w-full flex flex-col items-center justify-center py-12 md:py-20 px-4">
+            <div class="w-full max-w-md flex flex-col items-center text-center">
+                <div class="w-20 h-20 mb-6 rounded-full bg-[#E8F8F5] flex items-center justify-center shrink-0">
+                    <i-lucide [img]="FileTextIcon" size="40" class="text-[#47CBB6]"></i-lucide>
+                </div>
+                <h2 class="text-xl md:text-2xl font-semibold text-[#2D5A54] mb-3 w-full">No blogs yet</h2>
+                <p class="text-gray-600 w-full"
+                    style="font-family: 'Rethink Sans', Sans-serif; font-size: 16px; line-height: 1.6;">
+                    We're working on bringing you expert insights on nutrition, practice management, and more. Check back soon!
+                </p>
+            </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="blogs-grid" *ngIf="!isLoading && posts.length > 0">
+            <article class="blog-card" *ngFor="let blog of pagedPosts; let i = index">
+                <div class="card-image cursor-pointer" (click)="selectPost(blog)">
+                    <img 
+                        [src]="blog.image" 
+                        [alt]="blog.title" 
+                        [attr.loading]="i < 6 ? 'eager' : 'lazy'"
+                        [attr.fetchpriority]="i < 6 ? 'high' : 'auto'"
+                        decoding="async"
+                    />
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="meta-author" style="margin-bottom: 4px;">
+                            <ng-container *ngIf="blog.authorImage && blog.authorImage !== ''; else defaultUserIcon">
+                                <img [src]="blog.authorImage" alt="Author" style="width:24px;height:24px;object-fit:cover;border-radius:50%;border:2px solid #47CBB6;margin-right:4px;" />
+                            </ng-container>
+                            <ng-template #defaultUserIcon>
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color: #00D4B7;">
+                                    <circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" />
+                                    <path d="M3 14c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                                </svg>
+                            </ng-template>
+                            <span>{{ blog.author }}</span>
+                        </span>
+                        <span class="meta-date" style="margin-bottom: 4px;">
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color: #00D4B7;">
+                                <rect x="2" y="3" width="12" height="11" rx="1.2" ry="1.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+                                <path d="M2 6h12" stroke="currentColor" stroke-width="1.2" />
+                                <path d="M6 2v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                                <path d="M10 2v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                            </svg>
+                            <span>{{ formatDate(blog.date) }}</span>
+                        </span>
+
+                        <ng-container *ngIf="getBlogCategoryName(blog)">
+                            <span class="meta-category" style="margin-bottom: 4px;">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color: #00D4B7;">
+                                    <path d="M2 2h4v4H2V2zm6 0h6v4H8V2zM2 8h4v4H2V8zm6 0h6v4H8V8z" fill="currentColor" />
+                                </svg>
+                                <span>{{ getBlogCategoryName(blog) }}</span>
+                            </span>
+                        </ng-container>
+                    </div>
+                    <h2 class="card-title">
+                        <a (click)="selectPost(blog)" class="card-title-link cursor-pointer">
+                            {{ blog.title }}
+                        </a>
+                    </h2>
+                    <hr class="card-title-content-sep" aria-hidden="true" />
+                    <p class="card-excerpt">
+                        {{ blog.description }}
+                    </p>
+                    <div class="card-footer">
+                        <a (click)="selectPost(blog)" class="btn-read-more cursor-pointer">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Simple pagination -->
+        <div class="blogs-pagination" *ngIf="!isLoading && totalCount > pageSize">
+            <span class="blogs-pagination-info">
+                Showing {{ paginationStart }}–{{ paginationEnd }} of {{ totalCount }}
+            </span>
+            <div class="blogs-pagination-controls">
+                <button type="button" class="page-btn" (click)="page = page - 1" [disabled]="page === 1">Previous</button>
+                <button type="button" class="page-btn" (click)="page = page + 1" [disabled]="page >= totalPages">Next</button>
+            </div>
+        </div>
+
+    </div>
+    } @else {
+    <div class="animate-in fade-in duration-500 detail-view-shell">
+        <div class="max-w-7xl mx-auto px-4 pt-4 detail-view-container">
+            <!-- Breadcrumbs in Detail View -->
+            <div class="breadcrumbs detail-breadcrumbs" style="justify-content: flex-start; margin-bottom: 24px;">
+                <a href="/">Home</a>
+                <span class="divider">›</span>
+                <a (click)="deselectPost()" class="cursor-pointer hover:underline" style="color: #1a9a8a;">Latest Blogs</a>
+                <span class="divider">›</span>
+                <span class="current" style="text-transform: capitalize; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px;">{{selectedPost.title}}</span>
+            </div>
+
+            <!-- Back Button -->
+            <button (click)="deselectPost()"
+                class="mb-6 flex items-center gap-2 text-[#47CBB6] font-black uppercase tracking-widest hover:gap-4 transition-all detail-back-button">
+                <i-lucide [img]="ChevronLeft" size="20"></i-lucide> Back to Blogs
+            </button>
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 detail-layout">
+                <!-- Main Content Area -->
+                <div class="lg:w-[68%] detail-main">
+                    <!-- Title -->
+                    <h1
+                        class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#2D5A54] leading-tight mb-6 md:mb-12 text-none detail-title">
+                        {{selectedPost.title}}
+                    </h1>
+
+                    <div class="mb-8 rounded-sm overflow-hidden shadow-lg detail-hero">
+                        <img [src]="selectedPost.image" [alt]="selectedPost.title" class="w-full h-auto object-cover" />
+                    </div>
+
+                    <div
+                        class="flex items-center gap-1 md:gap-2 py-4 border-b border-[#47CBB6] mb-8 md:mb-12 flex-wrap detail-meta">
+                                                <div class="flex items-center gap-1 detail-meta-item detail-meta-author">
+                                                        <ng-container *ngIf="selectedPost.authorImage; else defaultUserIconDetail">
+                                                            <img [src]="selectedPost.authorImage" alt="Author" class="w-7 h-7 rounded-full object-cover border border-[#47CBB6] mr-1" />
+                                                        </ng-container>
+                                                        <ng-template #defaultUserIconDetail>
+                                                            <i-lucide [img]="UserIcon" size="20" class="text-[#47CBB6]"></i-lucide>
+                                                        </ng-template>
+                                                        <span class="text-[17px] font-semibold text-[#000000]">{{selectedPost.author}}</span>
+                                                </div>
+                        <span class="inline-block w-[2px] h-6 bg-[#1FCEC6] mx-[0.5px] detail-meta-separator"></span>
+                        <div class="flex items-center gap-1 detail-meta-item">
+                            <i-lucide [img]="CalendarIcon" size="18" class="text-[#47CBB6]"></i-lucide>
+                            <span>{{formatDate(selectedPost.date)}}</span>
+                        </div>
+                        <span class="inline-block w-[2px] h-6 bg-[#1FCEC6] mx-[0.5px] detail-meta-separator"></span>
+                        <div class="flex items-center gap-1 detail-meta-item detail-meta-category">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1FCEC6" viewBox="0 0 16 16"><rect x="2" y="2" width="4" height="4" rx="1"/><rect x="10" y="2" width="4" height="4" rx="1"/><rect x="2" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/></svg>
+                            <span class="text-[#47CBB6] font-semibold text-[16px]">{{selectedPost.category || 'General'}}</span>
+                        </div>
+                    </div>
+
+                    <div class="blogs-post-content detail-post-content space-y-8"
+                        style="font-family: 'Rethink Sans', Sans-serif; font-size: 18px; line-height: 25px; letter-spacing: 0.3px; color: #000000;">
+                        @if (isDetailLoading && !selectedPost.content) {
+                        <div class="space-y-4 animate-pulse">
+                            <div class="h-5 bg-gray-200 rounded w-full"></div>
+                            <div class="h-5 bg-gray-200 rounded w-11/12"></div>
+                            <div class="h-5 bg-gray-200 rounded w-10/12"></div>
+                            <div class="h-5 bg-gray-200 rounded w-9/12"></div>
+                            <div class="h-5 bg-gray-200 rounded w-full"></div>
+                            <div class="h-5 bg-gray-200 rounded w-8/12"></div>
+                        </div>
+                        } @else if (selectedPost.content) {
+                        <div [innerHTML]="selectedPost.content"></div>
+                        } @else {
+                        <p>Meal planning is a core competency in dietetic practice. Yet even with strong clinical
+                            knowledge and best intentions, meal plans can fall short, not because of poor science, but
+                            due to gaps between planning and real-world application. Recognizing common pitfalls allows
+                            dietitians to refine their approach, improve client adherence, and strengthen long-term
+                            outcomes.</p>
+
+                        <div>
+                            <h3 class="font-bold text-xl"><span class="font-semibold">1. </span>Over-Prescribing
+                                Without Adequate Assessment</h3>
+                            <p>One of the most common errors in meal planning is moving too quickly
+                                from consultation to prescription. Incomplete assessment, particularly of lifestyle,
+                                food
+                                access, cooking skills, and readiness to change, can lead to plans that are
+                                technically correct but practically unworkable.</p>
+                            <h3 class="font-bold text-xl">What to avoid:</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Assuming dietary habits based on diagnosis alone</li>
+                                <li>Relying solely on calorie targets without context</li>
+                            </ul>
+                            <h3 class="font-bold text-xl">Professional approach:</h3>
+                            <p>Comprehensive assessment including behavioral, cultural, and psychosocial factors
+                                should precede meal plan development. Use digital structured assessment tools and
+                                standardized intake questionnaires help ensure no critical variables are overlooked.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-xl"><span class="font-semibold">2. </span>Designing “Perfect”
+                                Plans That Clients Cannot Follow</h3>
+                            <p>Highly detailed or rigid meal plans may appear clinically impressive but
+                                often fail in real life. Overly prescriptive plans can overwhelm clients, reduce
+                                confidence, and lead to early dropout.</p>
+                            <h3 class="font-bold text-xl">What to avoid:</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Excessive food rules and strict meal timings</li>
+                                <li>Lack of flexibility for social or cultural eating</li>
+                            </ul>
+                            <h3 class="font-bold text-xl">Professional approach:</h3>
+                            <p>Effective plans prioritize feasibility over perfection. Incorporating flexibility,
+                                substitutions, and choice improves adherence and empowers clients to self-manage.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-xl"><span class="font-semibold">3. </span>Ignoring Behavior
+                                Change Principles</h3>
+                            <p>Nutrition knowledge alone does not drive dietary change. Meal plans that
+                                do not address habits, routines, and motivation often fail, regardless of nutritional
+                                accuracy.</p>
+                            <h3 class="font-bold text-xl">What to avoid:</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Treating meal planning as a purely technical task</li>
+                                <li>Focusing only on “what to eat” without addressing “how” and “why”</li>
+                            </ul>
+                            <h3 class="font-bold text-xl">Professional approach:</h3>
+                            <p>Integrate behavior change strategies such as goal-setting, gradual progression, and
+                                self-monitoring through app-based tracking. Meal plans should function as behavioral
+                                tools, not just nutrient prescriptions.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-xl"><span class="font-semibold">4. </span>Failing to
+                                Personalize Beyond Calories and Macros</h3>
+                            <p>While energy and macronutrients are important, personalization must extend
+                                further. Ignoring taste preferences, cooking skills, religious or cultural food
+                                practices, and financial constraints can undermine even the most evidence-based plan.
+                            </p>
+                            <h3 class="font-bold text-xl">What to avoid:</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Generic templates without contextual adaptation</li>
+                                <li>Repeating the same food lists across diverse clients</li>
+                            </ul>
+                            <h3 class="font-bold text-xl">Professional approach:</h3>
+                            <p>Personalized meal planning respects individual food environments. Technology can assist
+                                by enabling modular templates that are easily customized without compromising clinical
+                                goals.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-xl"><span class="font-semibold">5. </span>Not Monitoring or
+                                Updating Meal Plans Regularly</h3>
+                            <p>A meal plan is not a static document. Failure to review intake data,
+                                clinical outcomes, or client feedback can lead to stagnation and disengagement.</p>
+                            <h3 class="font-bold text-xl">What to avoid:</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Treating the initial plan as final</li>
+                                <li>Delaying adjustments until significant setbacks occur</li>
+                            </ul>
+                            <h3 class="font-bold text-xl">Professional approach:</h3>
+                            <p>Ongoing monitoring and timely revisions are essential. Regular follow-ups, supported by
+                                digital tracking tools, allow dietitians to refine plans in response to real-world
+                                adherence and outcomes.</p>
+                        </div>
+
+                        <div>
+                            <p class="mb-4">Meal planning is both a science and a skill. Avoiding common pitfalls such
+                                as inadequate assessment, rigid planning, and insufficient follow-up can significantly
+                                improve client outcomes and professional satisfaction. By combining evidence-based
+                                frameworks, behavior change principles, and thoughtful use of technology, dietitians can
+                                create meal plans that are not only accurate, but also sustainable and impactful.</p>
+                            <p>At ReeCoach, we support dietitians with tools designed to reduce friction in planning
+                                while preserving clinical rigor, helping professionals focus on what matters most:
+                                effective, client-centered nutrition care.</p>
+                        </div>
+                        }
+                    </div>
+
+                    <div class="mt-10 pt-12 border-t border-gray-100 text-center">
+                        <p class="text-xl font-black text-[#2D5A54] mb-4">Want to collaborate or know more about
+                            ReeCoach?</p>
+                        <p class="text-[18px] font-bold">
+                            Let's connect and build the future of nutrition together – <a href="/contact"
+                                class="text-[#67CFBD] hover:underline text-[18px] font-bold cursor-pointer">Contact us
+                                here</a>
+                        </p>
+                    </div>
+
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:w-[32%] space-y-12 detail-sidebar">
+                    <div>
+                        <h4 class="text-2xl font-black text-[#2D5A54] mb-8 detail-sidebar-title">Latest Blogs</h4>
+                        <div class="space-y-10 detail-related-list">
+                            @for (lp of latestPosts; track lp.id) {
+                            <div (click)="selectPost(lp)" class="group cursor-pointer detail-related-card">
+                                <div class="aspect-[16/9] rounded-sm overflow-hidden mb-4 shadow-sm detail-related-image">
+                                    <img [src]="lp.image" [alt]="lp.title"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                </div>
+                                <div class="flex items-center gap-1 md:gap-2 text-[12px] font-medium text-[#000000] tracking-wider mb-3 flex-wrap detail-related-meta">
+                                    <div class="flex items-center gap-1 detail-related-meta-item">
+                                        <ng-container *ngIf="lp.authorImage; else defaultUserIconLP">
+                                            <img [src]="lp.authorImage" alt="Author" class="w-5 h-5 rounded-full object-cover border border-[#47CBB6] mr-1" />
+                                        </ng-container>
+                                        <ng-template #defaultUserIconLP>
+                                            <i-lucide [img]="UserIcon" size="12" class="text-[#47CBB6]"></i-lucide>
+                                        </ng-template>
+                                        <span>{{lp.author}}</span>
+                                    </div>
+                                    <span class="inline-block w-[2px] h-4 bg-[#1FCEC6] mx-[0.5px] detail-related-meta-separator"></span>
+                                    <div class="flex items-center gap-1 detail-related-meta-item">
+                                        <i-lucide [img]="CalendarIcon" size="12" class="text-[#47CBB6]"></i-lucide>
+                                        <span>{{formatDate(lp.date)}}</span>
+                                    </div>
+                                    <span class="inline-block w-[2px] h-4 bg-[#1FCEC6] mx-[0.5px] detail-related-meta-separator"></span>
+                                    <div class="flex items-center gap-1 detail-related-meta-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#1FCEC6" viewBox="0 0 16 16"><rect x="2" y="2" width="4" height="4" rx="1"/><rect x="10" y="2" width="4" height="4" rx="1"/><rect x="2" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/></svg>
+                                        <span>{{getBlogCategoryName(lp) || 'General'}}</span>
+                                    </div>
+                                </div>
+                                <h5
+                                    class="text-[15px] font-black text-[#2D5A54] leading-tight mb-3 group-hover:text-[#47CBB6] transition-colors line-clamp-2 detail-related-title">
+                                    {{lp.title}}
+                                </h5>
+                                <p class="line-clamp-3 mb-4"
+                                    style="color: #000000; font-family: 'Rethink Sans', Sans-serif; font-size: 16px; font-weight: 400; letter-spacing: 0.5px;">
+                                    {{lp.description}}
+                                </p>
+                                <button
+                                    class="text-[#47CBB6] text-xs font-black uppercase tracking-widest hover:underline">Read
+                                    More</button>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

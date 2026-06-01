@@ -1,0 +1,88 @@
+/* Base wrapper adjustment */
+.about-us-page-wrapper {
+  margin-top: -20px !important;
+}
+
+@media (min-width: 768px) {
+  .about-us-page-wrapper {
+    margin-top: -10px !important;
+  }
+}
+
+/* Nutrition Software for Nutritionists - larger font, letter spacing */
+.about-nutrition-tagline {
+  font-size: 27px;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive Container Overrides */
+.about-responsive-container {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Match Header Alignment: Left logo, Right button starting from 1280px */
+@media (min-width: 1280px) {
+  .about-responsive-container {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
+
+/* Original large desktop look for very wide screens */
+@media (min-width: 1536px) {
+  .about-responsive-container {
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
+
+/* Specific adjustments for mobile elements */
+@media (max-width: 767px) {
+  .about-custom-heading {
+    font-size: 24px !important;
+    text-align: center !important;
+  }
+
+  .about-kit-h3 {
+    text-align: center !important;
+  }
+
+  .about-standard-p {
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+
+  .about-mission-list {
+    font-size: 16px !important;
+    padding-left: 25px !important;
+    line-height: normal !important;
+  }
+
+  /* Final CTA Section Mobile Adjustments */
+  .about-final-cta-content {
+    align-items: center !important;
+    text-align: center !important;
+    padding-right: 0 !important;
+  }
+
+  .about-final-cta-h2 {
+    font-size: 24px !important;
+    text-align: center !important;
+  }
+
+  .about-final-cta-p {
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+}
+
+/* Text alignment for vision items */
+@media (max-width: 1023px) {
+  .about-highlight-text {
+    font-size: 16px !important;
+  }
+}

@@ -1,0 +1,224 @@
+<section class="contact-page">
+  <div class="contact-container">
+    <h1>Get In Touch</h1>
+
+    <div class="contact-grid">
+      <aside class="contact-info-card">
+        <h2>Contact Information</h2>
+        <ul>
+          <li>
+            <span class="icon icon-phone" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </span>
+            <a href="tel:+919619750505" class="contact-link">+91-9619750505</a>
+          </li>
+          <li>
+            <span class="icon icon-email" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </span>
+            <a href="mailto:support@reework.in" class="contact-link">support&#64;reework.in</a>
+          </li>
+          <li>
+            <span class="icon icon-location" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </span>
+            <span class="contact-address">
+              Shamrock Nutrascience Pvt. Ltd.<br />
+              83 E, Hansraj Pragji Building, Off. Dr. E. Moses Road, Worli, Mumbai, Maharashtra 400018.
+            </span>
+          </li>
+        </ul>
+      </aside>
+
+      <section class="contact-form-card">
+        <form>
+          <div class="field">
+            <label>Your Name <span>*</span></label>
+            <input 
+              type="text" 
+              placeholder="Dravid" 
+              required 
+              maxlength="70"
+              [(ngModel)]="contactForm.name"
+              name="name"
+            />
+            <span class="char-count">{{ contactForm.name.length }} of 70 max characters</span>
+          </div>
+
+          <div class="row-two">
+            <div>
+              <div class="field">
+                <label>Contact Number <span>*</span></label>
+                <div class="country-field">
+                  <div class="country-control">
+                    <button type="button" class="country-toggle" (click)="toggleCountryDropdown()">
+                      <img 
+                        [src]="selectedCountry.flagImage || 'https://flagcdn.com/w20/in.png'" 
+                        [alt]="selectedCountry.name + ' flag'" 
+                        class="flag-img"
+                        (error)="$event.target.style.display='none'"
+                      />
+                      <span class="arrow">▾</span>
+                      <span class="code">{{ selectedCountry.dialCode }}</span>
+                    </button>
+                    <input
+                      class="country-phone-input"
+                      type="tel"
+                      [placeholder]="isIndiaSelected ? '98765 43210' : 'Enter contact number'"
+                      required
+                      [maxLength]="isIndiaSelected ? 10 : 15"
+                      inputmode="numeric"
+                      pattern="^[0-9]+$"
+                      [(ngModel)]="contactForm.phone"
+                      name="phone"
+                      (input)="onPhoneInput($event)"
+                    />
+                  </div>
+                  <span class="char-count phone-char-count">
+                    {{ contactForm.phone.length }}/{{ isIndiaSelected ? 10 : 15 }}
+                  </span>
+                  <div class="country-dropdown" *ngIf="countryOpen">
+                    <div class="country-search">
+                      <input
+                        type="text"
+                        placeholder="Search"
+                        [value]="countrySearch"
+                        (input)="onCountrySearch($event)"
+                      />
+                    </div>
+                    <div class="country-list">
+                      <button
+                        type="button"
+                        class="country-item"
+                        *ngFor="let option of filteredCountries"
+                        (click)="selectCountry(option)"
+                        [class.selected]="
+                          option.name === selectedCountry.name &&
+                          option.dialCode === selectedCountry.dialCode
+                        "
+                      >
+                        <img 
+                          [src]="option.flagImage || 'https://flagcdn.com/w20/in.png'" 
+                          [alt]="option.name + ' flag'" 
+                          class="flag-img"
+                          (error)="$event.target.style.display='none'"
+                        />
+                        <span class="name">{{ option.name }}</span>
+                        <span class="code">{{ option.dialCode }}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="field">
+                <label>Your Email <span>*</span></label>
+                <input 
+                  type="email" 
+                  placeholder="dravid@gmail.com" 
+                  required 
+                  maxlength="60"
+                  [(ngModel)]="contactForm.email"
+                  name="email"
+                />
+                <span class="char-count">{{ contactForm.email.length }}/60</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-two">
+            <div>
+              <div class="field">
+                <label>Country <span>*</span></label>
+                <select 
+                  required
+                  [(ngModel)]="contactForm.country"
+                  name="country"
+                >
+                  <option value="">Select Country</option>
+                  <option *ngFor="let country of countryOptions" [value]="country.name">
+                    {{ country.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="field">
+                <label>State <span>*</span></label>
+                <input 
+                  type="text" 
+                  placeholder="Maharashtra" 
+                  required 
+                  maxlength="70"
+                  [(ngModel)]="contactForm.state"
+                  name="state"
+                />
+                <span class="char-count">{{ contactForm.state.length }} of 70 max characters</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-two">
+            <div>
+              <div class="field">
+                <label>City <span>*</span></label>
+                <input 
+                  type="text" 
+                  placeholder="Mumbai" 
+                  required 
+                  maxlength="70"
+                  [(ngModel)]="contactForm.city"
+                  name="city"
+                />
+                <span class="char-count">{{ contactForm.city.length }} of 70 max characters</span>
+              </div>
+            </div>
+            <div>
+              <div class="field">
+                <label>Pincode <span>*</span></label>
+                <input 
+                  type="text" 
+                  placeholder="400018" 
+                  required 
+                  maxlength="10"
+                  inputmode="numeric"
+                  pattern="^[0-9]+$"
+                  [(ngModel)]="contactForm.pincode"
+                  name="pincode"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Your Query</label>
+            <textarea
+              rows="5"
+              placeholder="Hi, I would like to know more about your health plans."
+              maxlength="300"
+              aria-describedby="query-limit"
+              [(ngModel)]="contactForm.query"
+              name="query"
+            ></textarea>
+            <small id="query-limit" class="char-count query-char-count">{{ contactForm.query.length }} of 300 max characters</small>
+          </div>
+
+          <!-- Captcha hidden for now -->
+          <div class="captcha-box" *ngIf="showCaptcha" style="display: none;">
+            <div class="check"></div>
+            <span>I'm not a robot</span>
+            <div class="captcha-brand">
+              <span class="captcha-logo"></span>
+              <span>reCAPTCHA</span>
+              <span class="captcha-links">Privacy - Terms</span>
+            </div>
+          </div>
+
+          <div *ngIf="submitError" class="form-error-message">{{ submitError }}</div>
+          <button type="button" class="submit-button" (click)="onSubmitForm()" [disabled]="isSubmitting">Submit Form</button>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>

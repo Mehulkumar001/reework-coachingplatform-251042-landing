@@ -1,0 +1,59 @@
+<div class="knowledge-repository-page-wrapper pt-0">
+    <!-- Hero Section -->
+    <section class="relative bg-[#2D5A54] overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[600px] py-6 flex flex-col justify-center">
+        <!-- Background Image -->
+        <img src="/KnowledgeRepositoryBgImg.jpeg" alt="Knowledge Repository"
+            class="absolute inset-0 w-full h-full object-cover object-center md:object-top" />
+
+        <div class="max-w-7xl mx-auto w-full h-full relative px-4 sm:px-6 md:px-6 lg:px-8 flex items-center">
+            <!-- Heading -->
+            <div class="knowledge-repository-hero-heading pt-12 sm:pt-16 md:pt-20 pb-8 md:pb-12 w-full">
+                <h1 class="knowledge-repository-hero-title mb-4 tracking-wide md:tracking-[3.5px]"
+                    style="font-family: 'Rethink Sans'; text-shadow: none; line-height: 1.3; font-style: normal; text-decoration: none; text-transform: uppercase; font-weight: 600;">
+                    <span class="block whitespace-normal sm:whitespace-nowrap">Shape the future of</span>
+                    <span class="block whitespace-normal sm:whitespace-nowrap">nutrition and health with</span>
+                    <span class="block whitespace-normal sm:whitespace-nowrap">our extensive resources!</span>
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="pb-10 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-20">
+                <h2 style='font-family: "Rethink Sans", Sans-serif; font-size: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2rem; color: #1F6861;'
+                    class="text-left mb-4 pt-8">
+                    KNOWLEDGE REPOSITORY
+                </h2>
+                <p
+                    style='text-align: left; font-family: "Rethink Sans", Sans-serif; font-size: 22px; font-weight: 400; color: #333333;'>
+                    Enhance your knowledge with our comprehensive and well-researched resources.
+                </p>
+            </div>
+
+            <!-- Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                @for (res of resources; track res.title) {
+                <div class="bg-white rounded-[20px] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.5)] flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300"
+                    style="padding: 20px 10px 40px 10px;">
+                    <div class="mb-8 flex items-center justify-center">
+                        <img [src]="res.image" [alt]="res.title" class="w-24 h-24 object-contain" />
+                    </div>
+                    <h3 style="margin-bottom: 5px; font-family: 'Rethink Sans', Sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #1F6861;"
+                        class="h-12 flex items-center justify-center">
+                        {{res.title}}
+                    </h3>
+                    <p style='text-align: center; font-family: "Rethink Sans", Sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 0.6px; color: #232323;'
+                        class="max-w-[280px]">
+                        {{res.description}}
+                    </p>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Decorative Bottom Bar -->
+    <div class="h-1 bg-[#47CBB6] w-full opacity-30"></div>
+</div>

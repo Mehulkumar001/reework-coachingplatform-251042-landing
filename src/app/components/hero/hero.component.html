@@ -1,0 +1,87 @@
+<section class="relative bg-[#2D5A54] overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[600px] py-2">
+    <style>
+        .hero-decorative-img {
+            width: 64px;
+            height: 64px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-decorative-img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .hero-bottom-decorative-img {
+            width: 120px;
+            height: 120px;
+            opacity: 0.3;
+        }
+
+        @media (min-width: 768px) {
+            .hero-bottom-decorative-img {
+                width: 150px;
+                height: 150px;
+                opacity: 0.4;
+            }
+        }
+    </style>
+    <!-- Slider Container -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="flex h-full transition-transform duration-700 ease-in-out"
+            [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+            @for (slide of slides; track $index) {
+            <div class="min-w-full w-full h-full flex-shrink-0 relative">
+
+                <!-- Background Image -->
+                <img [src]="slide.image" [alt]="slide.title"
+                    class="absolute inset-0 w-full h-full object-cover object-top" />
+
+                <!-- Bottom Decorative Crosshair Image -->
+                <img src="/vectorImg-13.png" alt=""
+                    class="hero-bottom-decorative-img absolute bottom-0 left-1/2 -translate-x-1/2 -ml-24 md:-ml-32 hidden md:block pointer-events-none z-10">
+
+                <!-- Content -->
+                <div class="max-w-7xl mx-auto h-full relative px-4 md:px-6 lg:px-8">
+                    <div
+                        class="relative md:absolute md:left-4 md:top-1/2 md:-translate-y-1/2 pt-24 pb-12 md:pt-0 md:pb-0">
+                        <!-- Decorative Vector - Top of Title -->
+                        <img src="/vectorImg-3.png" alt=""
+                            class="hero-decorative-img mb-2 md:mb-3 -mt-2 md:-mt-3 hidden md:block pointer-events-none opacity-90 -ml-4 md:-ml-5">
+                        <!-- Heading -->
+                        @if ($index === 0) {
+                        <h1 style="font-family: 'Rethink Sans'; color: #ffffff; text-shadow: none; line-height: 1.3; font-style: normal; text-decoration: none; text-transform: uppercase; font-weight: 600;"
+                            class="text-xl sm:text-2xl md:text-4xl lg:text-5xl mb-3 md:mb-8 tracking-wide md:tracking-[3.5px]"
+                            [innerHTML]="slide.title">
+                        </h1>
+                        } @else {
+                        <div style="font-family: 'Rethink Sans'; color: #ffffff; text-shadow: none; line-height: 1.3; font-style: normal; text-decoration: none; text-transform: uppercase; font-weight: 600;"
+                            class="text-xl sm:text-2xl md:text-4xl lg:text-5xl mb-3 md:mb-8 tracking-wide md:tracking-[3.5px]"
+                            [innerHTML]="slide.title">
+                        </div>
+                        }
+
+                        <!-- Subtitle -->
+                        <p style="font-family: 'Rethink Sans'; color: #ffffff; text-shadow: none; line-height: 1.2; font-weight: 100; font-style: normal; text-decoration: none; text-align: inherit; text-transform: none;"
+                            class="text-sm sm:text-base md:text-xl lg:text-2xl mb-8 md:mb-12 tracking-wide md:tracking-[3px]"
+                            [innerHTML]="slide.subtitle">
+                        </p>
+
+                        <!-- Button -->
+                        <a [routerLink]="['/become-a-reecoach']" fragment="applySection"
+                            class="bg-[#47CBB6] text-[#000000] px-5 py-2 md:px-8 md:py-3 rounded font-[500] text-[15px] inline-flex items-center gap-2 hover:bg-[#3ab5a1] transition-all uppercase tracking-wider cursor-pointer mt-6 md:mt-8">
+                            {{ slide.buttonText }} <i-lucide [img]="ChevronRight" size="16"
+                                class="md:w-[18px] md:h-[18px]"></i-lucide>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- Navigation Arrows - Hidden on Mobile, Visible on Desktop -->
+
+
+    <!-- Slide Indicators removed as per user request -->
+</section>
